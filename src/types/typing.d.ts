@@ -10,11 +10,8 @@ export type Post = {
     };
     //comments: Comment[];
     //description: string;
-    mainImage: {
-        asset:{
-            url: string;
-        };
-    };
+    mainImage: string;
+
     slug: string;
     body: PortableTextBlock[];
 }

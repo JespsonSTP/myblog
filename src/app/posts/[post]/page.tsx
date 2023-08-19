@@ -47,34 +47,6 @@ export default async function Post({ params }: Props) {
                     <div className="mt-10">
                         <PortableText  
                             value={post?.body}
-                            serializers={{
-                                h1: (props: any) => (
-                                    <h1
-                                        className="text-3xl font-hold my-5 font-titleFont"
-                                        {...props}
-                                    />
-                                ),
-                                h2: (props: any) => (
-                                    <h2
-                                        className="text-2xl font-hold my-5 font-titleFont"
-                                        {...props}
-                                    />
-                                ),
-                                h3: (props: any) => (
-                                    <h3
-                                        className="text-1xl font-hold my-5 font-titleFont"
-                                        {...props}
-                                    />
-                                ),
-                                li: ({children}: any) => (
-                                    <li className="ml-4 list-disc">{children}</li>
-                                ),
-                                link: ({href, children}: any) => (
-                                    <a href={href} className="text-cyan-500 hover:underline">
-                                        {children}
-                                    </a>
-                                ),
-                            }}
                         />
                     </div>
                 </article>
