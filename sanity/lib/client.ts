@@ -25,7 +25,7 @@ export async function getPosts(): Promise<Post[]> {
   )
 }
 
-export async function getPost(slug: string): Promise<Post> {
+export async function getPost(slug: string) {
   return client.fetch(
     groq`*[_type=="post" && slug.current == $slug][0]{
       _id,

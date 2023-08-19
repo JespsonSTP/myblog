@@ -1,9 +1,8 @@
 import { client } from "../../../../sanity/lib/client"
-import PortableText from "react-portable-text"
+import { PortableText } from "@portabletext/react"
 import Header from "@/components/Header"
 import { getPost } from "../../../../sanity/lib/client"
 import Footer from "@/components/Footer"
-
 import { groq } from "next-sanity";
 import { urlForImage } from "../../../../sanity/lib/image";
 
@@ -25,31 +24,29 @@ type Props = {
 }
 
 export default async function Post({ params }: Props) {
-
+    
     const slug = params.post
-    console.log(slug)
     const post = await client.fetch(query,{
         slug: slug
     });
-
-    console.log(post)
-
+    //console.log(post)
+    //setTimeout(() => 10)
     //const post = await getPost(slug)
-
+    //console.log(post)
     return(
         <div>
             <Header />
             <img />
             <div>
                 <article>
-                    <h1>{post.title}</h1>
+                    <h1>{post?.title}</h1>
                     <div>
-                        <img src={post.author.image} alt="the-authors-image" />
-                        <p>Blog post by <span>{post.author.name}</span> - Published at {new Date(post.publishedAt).toLocaleDateString()}</p>
+                        <img src={post?.author?.image} alt="the-authors-image" />
+                        <p>Blog post by <span>{post?.author?.name}</span> - Published at {new Date(post?.publishedAt).toLocaleDateString()}</p>
                     </div>
                     <div className="mt-10">
                         <PortableText  
-                            content={post.body}
+                            value={post?.body}
                             serializers={{
                                 h1: (props: any) => (
                                     <h1

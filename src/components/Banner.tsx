@@ -7,7 +7,7 @@ import bannerImgOne from "../../public/images/bannerImgOne.jpg";
 import { urlForImage } from "../../sanity/lib/image";
 import { Post } from "../types/typing"
 import { groq } from "next-sanity";
-
+import Link from 'next/link'
 
 const query = groq`
 *[_type=="post"] | order(_createdAt desc) [1...5]{
@@ -77,6 +77,7 @@ export default async function Banner() {
     <div className="w-full h-auto md:h-[600px] relative">
       <Slider {...settings}>
       {posts.map((post: Post) => (
+        <Link key={post._id} href={`/posts/${post.slug}`}>
         <div>
         <Image
           className="w-full h-auto md:h-[600px] object-cover"
@@ -85,9 +86,11 @@ export default async function Banner() {
           loading={"eager"}
           alt="BlogListImages"
         />
-      </div>
+        </div>
+      </Link>
       ))}
       </Slider>
     </div>
   );
 };
+
